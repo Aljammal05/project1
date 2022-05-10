@@ -1,0 +1,44 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:project1_v1/SignInPage.dart';
+import 'package:project1_v1/UserTypePage.dart';
+
+class WelcomePage extends StatefulWidget {
+  _WelcomePageState createState() => _WelcomePageState();
+}
+class _WelcomePageState extends State<WelcomePage> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 3), (){
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return   SafeArea(child: UserTypePage() );}));
+    });
+  }
+  Widget build(BuildContext context) {
+
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: <Color>[
+              Color(0xff3CB371),
+              Color(0xff32CD32)],
+            tileMode: TileMode.repeated, )),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            //Image.asset('image/T3leleh.png', height: 120,),
+            SizedBox(height: 20,),
+            CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
