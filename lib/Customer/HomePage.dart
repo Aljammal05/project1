@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project1_v1/Customer/ConsultationPage.dart';
 import 'package:project1_v1/Customer/PharmacyViewPage.dart';
+import 'package:project1_v1/Database/Lists.dart';
 import 'package:project1_v1/UserTypePage.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,14 +15,13 @@ class _HomePageState extends State<HomePage> {
 
   Widget build(BuildContext context) {
     pharmacies.clear();
-    for (int i = 1; i <= 9; i++) {
+    for (int i = 0; i <Database.pharmacies.length; i++) {
       pharmacies.add(ImageButton(
-        image: "image/pharmacy$i.jpeg",
-        text: 'pharmacy$i',
+        image: Database.pharmacies.elementAt(i).imagePath,
+        text: Database.pharmacies.elementAt(i).name,
         destination: PharmacyViewPage(),
         height: MediaQuery.of(context).size.width / 2.6,
         width: MediaQuery.of(context).size.width / 2.6,
-        function: (){},
       ));
     }
     pharmacies.shuffle();
@@ -72,7 +72,6 @@ class _HomePageState extends State<HomePage> {
                 image: "image/istesharah.jpeg",
                 height: 70,
                 width: 230,
-                function: (){},
               ),
             ),
           ],

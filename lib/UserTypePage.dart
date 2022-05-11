@@ -3,14 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:project1_v1/EmployeeTypePage.dart';
 import 'package:project1_v1/SignInPage.dart';
 
-enum  UserType  {
-  ADMIN,
-  CUSTOMER,
-  DELIVERY,
-  PHARMACY,
-}
+
 class UserTypePage extends StatefulWidget {
-  static UserType type = UserType.CUSTOMER;
   @override
   _UserTypePageState createState() => _UserTypePageState();
 }
@@ -75,9 +69,6 @@ class _UserTypePageState extends State<UserTypePage> {
                       destination: SignInPage(),
                       height: MediaQuery.of(context).size.width / 2.8,
                       width: MediaQuery.of(context).size.width / 2.8,
-                      function: (){
-                        UserTypePage.type = UserType.CUSTOMER;
-                      },
                     ),
                     ImageButton(
                       image: "image/employee.jpeg",
@@ -85,8 +76,6 @@ class _UserTypePageState extends State<UserTypePage> {
                       destination: EmployeeTypePage(),
                       height: MediaQuery.of(context).size.width / 2.8,
                       width: MediaQuery.of(context).size.width / 2.8,
-                      function: (){
-                      },
                     )
                   ],
                 ),
@@ -154,11 +143,10 @@ class ImageButton extends StatefulWidget {
       required this.text,
       required this.destination,
       required this.height,
-      required this.width, required this.function} );
+      required this.width} );
   final String image, text;
   final Widget destination;
   final double height, width;
-  final Function function;
 
   @override
   _ImageButtonState createState() => _ImageButtonState();
@@ -169,7 +157,6 @@ class _ImageButtonState extends State<ImageButton> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        widget.function();
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           return SafeArea(child: widget.destination);
         }));

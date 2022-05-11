@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1_v1/Database/Lists.dart';
 import 'package:project1_v1/UserTypePage.dart';
 
 class AdminDashboard extends StatefulWidget {
@@ -14,26 +15,50 @@ class _AdminDashboardState extends State<AdminDashboard> {
     IconButton(destination: Container(), height: 100, width: 100)
   ];
 
-  @override
-  Widget build(BuildContext context) {
-    pharmacies.clear();
-    pharmacies
+
+  void fillDeliveries(){
+    deliveries.clear();
+    deliveries
         .add(IconButton(destination: Container(), height: 100, width: 100));
-    for (int i = 1; i <= 9; i++) {
-      pharmacies.add(
+    for (int i = 0; i < Database.deliveries.length; i++) {
+      deliveries.add(
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ImageButton(
-            image: "image/pharmacy$i.jpeg",
-            text: 'pharmacy$i',
+            image: Database.deliveries.elementAt(i).imagePath,
+            text: Database.deliveries.elementAt(i).name,
             destination: Container(),
             height: 100,
             width: 100,
-            function: () {},
           ),
         ),
       );
     }
+  }
+
+  void fillPharmacies(){
+    pharmacies.clear();
+    pharmacies
+        .add(IconButton(destination: Container(), height: 100, width: 100));
+    for (int i = 0; i < Database.pharmacies.length; i++) {
+      pharmacies.add(
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ImageButton(
+            image: Database.pharmacies.elementAt(i).imagePath,
+            text: Database.pharmacies.elementAt(i).name,
+            destination: Container(),
+            height: 100,
+            width: 100,
+          ),
+        ),
+      );
+    }
+  }
+  @override
+  Widget build(BuildContext context) {
+    fillDeliveries();
+    fillPharmacies();
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.black,

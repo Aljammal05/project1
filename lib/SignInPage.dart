@@ -2,12 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project1_v1/Admin/AdminDashboard.dart';
 import 'package:project1_v1/Customer/CustomerDashboard.dart';
+import 'package:project1_v1/Database/Lists.dart';
 import 'package:project1_v1/Delivery/DeliveryDashboard.dart';
+import 'package:project1_v1/Models/UserModel.dart';
 import 'package:project1_v1/Pharmacy/PharmacyDashboard.dart';
 import 'package:project1_v1/RegisterPage.dart';
 import 'package:project1_v1/Services/Auth_Services.dart';
 import 'package:project1_v1/Templates/Templates.dart';
-import 'package:project1_v1/UserTypePage.dart';
 import 'Dialogs/Dialogs.dart';
 
 class SignInPage extends StatefulWidget {
@@ -138,15 +139,18 @@ class _SignInPageState extends State<SignInPage> {
                       String currentuserid;
 
                       if (isValid) {
-                        currentuserid = await _auth.currentUser!.uid;
+                        UserType? type ;
+                        Database.users.forEach((user) {if(user.email.toLowerCase()==_email.toLowerCase())
+                        type = user.type!;});
+                        print(type.toString());
                         Navigator.pop(context);
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                               return SafeArea(
                                 child:
-                                UserTypePage.type == UserType.CUSTOMER ? CustomerDashboard() :
-                                UserTypePage.type == UserType.DELIVERY ? DeliveryDashboard() :
-                                UserTypePage.type == UserType.PHARMACY ? PharmacyDashboard() :
+                                type == UserType.CUSTOMER ? CustomerDashboard() :
+                                type == UserType.DELIVERY ? DeliveryDashboard() :
+                                type == UserType.PHARMACY ? PharmacyDashboard() :
                                     AdminDashboard()
                                 //todo
                               );
@@ -177,10 +181,10 @@ class _SignInPageState extends State<SignInPage> {
                           return SafeArea(child: RegisterPage());
                         }));
                       },
-                      child: UserTypePage.type==UserType.CUSTOMER ? FooterText(
+                      child: FooterText(
                         'Don\'t have an account ? ',
                         'Register',
-                      ):Container(height: 18,),
+                      )
                     )),
               ],
             ),

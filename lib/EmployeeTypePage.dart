@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project1_v1/Models/UserModel.dart';
 import 'package:project1_v1/SignInPage.dart';
 import 'package:project1_v1/UserTypePage.dart';
 
@@ -58,9 +59,7 @@ class _EmployeeTypePageState extends State<EmployeeTypePage> {
                             destination: SignInPage(),
                             height: MediaQuery.of(context).size.width / 2.8,
                             width: MediaQuery.of(context).size.width / 2.8,
-                            function: (){
-                              UserTypePage.type = UserType.DELIVERY;
-                            },
+
                           ),
                           ImageButton(
                             image: "image/pharmacy.png",
@@ -68,9 +67,7 @@ class _EmployeeTypePageState extends State<EmployeeTypePage> {
                             destination: SignInPage(),
                             height: MediaQuery.of(context).size.width / 2.8,
                             width: MediaQuery.of(context).size.width / 2.8,
-                            function: (){
-                              UserTypePage.type = UserType.PHARMACY;
-                            },
+
                           )
                         ],
                       ),
