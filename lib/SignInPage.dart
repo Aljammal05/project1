@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:project1_v1/Admin/AdminDashboard.dart';
 import 'package:project1_v1/Customer/CustomerDashboard.dart';
+import 'package:project1_v1/Delivery/DeliveryDashboard.dart';
+import 'package:project1_v1/Pharmacy/PharmacyDashboard.dart';
 import 'package:project1_v1/RegisterPage.dart';
 import 'package:project1_v1/Services/Auth_Services.dart';
 import 'package:project1_v1/Templates/Templates.dart';
@@ -70,7 +73,7 @@ class _SignInPageState extends State<SignInPage> {
                     Checkbox(
                       checkColor: Colors.white,
                       value: isChecked,
-                      fillColor: MaterialStateProperty.resolveWith((s)=>Color(0xff32CD32)),
+                      fillColor: MaterialStateProperty.resolveWith((s)=>Color(0xff99cc73)),
                       onChanged: (bool? value) {
                         setState(() {
                           isChecked = value!;
@@ -140,7 +143,12 @@ class _SignInPageState extends State<SignInPage> {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                               return SafeArea(
-                                child: CustomerDashboard() //todo
+                                child:
+                                UserTypePage.type == UserType.CUSTOMER ? CustomerDashboard() :
+                                UserTypePage.type == UserType.DELIVERY ? DeliveryDashboard() :
+                                UserTypePage.type == UserType.PHARMACY ? PharmacyDashboard() :
+                                    AdminDashboard()
+                                //todo
                               );
                             }));
                       } else {

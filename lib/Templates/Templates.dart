@@ -18,15 +18,7 @@ class _LinearColorBottomState extends State<LinearColorBottom> {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(20)),
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: <Color>[
-                Color(0xff3CB371),
-                Color(0xff32CD32)
-              ], // red to yellow
-              tileMode: TileMode.repeated,
-            )),
+            color: Color(0xff99cc73)),
         height: 50,
         width:150,
         child: Center(
@@ -138,7 +130,7 @@ class FooterText extends StatelessWidget {
           action,
           style: TextStyle(
             fontSize: 18,
-            color: Color(0xff32CD32),
+            color: Color(0xff99cc73),
             fontWeight: FontWeight.bold,
           ),
         ),

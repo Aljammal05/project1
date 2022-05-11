@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:project1_v1/SignInPage.dart';
+import 'package:project1_v1/Admin/AdminDashboard.dart';
 import 'package:project1_v1/UserTypePage.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -13,25 +13,19 @@ class _WelcomePageState extends State<WelcomePage> {
     super.initState();
     Timer(Duration(seconds: 3), (){
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return   SafeArea(child: UserTypePage() );}));
+        return   SafeArea(child: /*AdminDashboard()todo */ UserTypePage() );}));
     });
   }
   Widget build(BuildContext context) {
 
     return Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: <Color>[
-              Color(0xff3CB371),
-              Color(0xff32CD32)],
-            tileMode: TileMode.repeated, )),
+          color: Color(0xff99cc73)),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            //Image.asset('image/T3leleh.png', height: 120,),
+            Image.asset('image/logo.png', height: 90,),
             SizedBox(height: 20,),
             CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.white),

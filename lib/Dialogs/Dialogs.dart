@@ -17,12 +17,7 @@ class WarningDialog extends StatelessWidget {
       content: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(15)),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: <Color>[Color(0xff3CB371), Color(0xff32CD32)],
-              tileMode: TileMode.repeated,
-            )),
+            color: Color(0xff99cc73)),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -88,12 +83,7 @@ class ErrorDialog extends StatelessWidget {
       content: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(15)),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: <Color>[Color(0xff3CB371), Color(0xff32CD32)],
-              tileMode: TileMode.repeated,
-            )),
+            color: Color(0xff99cc73)),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -144,12 +134,7 @@ class WaitingDialog extends StatelessWidget {
       content: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(15)),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: <Color>[Color(0xff3CB371), Color(0xff32CD32)],
-              tileMode: TileMode.repeated,
-            )),
+            color: Color(0xff99cc73)),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -189,12 +174,7 @@ class FeedbackDialog extends StatelessWidget {
       content: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(15)),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: <Color>[Color(0xff3CB371), Color(0xff32CD32)],
-              tileMode: TileMode.repeated,
-            )),
+            color: Color(0xff99cc73)),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Column(mainAxisSize: MainAxisSize.min,

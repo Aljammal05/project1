@@ -22,66 +22,14 @@ class _CustomerDashboardState extends State<CustomerDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: <Color>[
-                            Color(0xff3CB371),
-                            Color(0xff32CD32)
-                          ], // red to yellow
-                          tileMode: TileMode.repeated,
-                        )),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Align(
-                            child: GestureDetector(
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Icon(
-                                  Icons.arrow_back,
-                                  color: Colors.white,
-                                  size: 32,
-                                ),
-                              ),
-                              onTap: () {
-                                setState(() {
-                                  Navigator.pop(context);
-                                });
-                              },
-                            ),
-                            alignment: Alignment.topLeft,
-                          ),
-                        ),
-                        Expanded(
-                          flex: 15,
-                          child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.only(right: 60.0),
-                                child: Text(
-                                  'Drug Center',
-                                  style: TextStyle(color: Colors.white, fontSize: 28),
-                                ),
-                              )),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 6,
-                  child: dashboard.elementAt(_selectedtap),
-                )
-              ],
+      appBar: AppBar(
+        foregroundColor: Colors.black,
+        backgroundColor: Color(0xff99cc73),
+        title: Center(child: Text("Drug Center",style: TextStyle(fontSize: 35),)),
+        actions: [Container(width: 60,)],
       ),
+      body:  dashboard.elementAt(_selectedtap),
+
       bottomNavigationBar: BottomNavigationBar(
 
         onTap: (index) {
@@ -90,7 +38,7 @@ class _CustomerDashboardState extends State<CustomerDashboard> {
           });
         },
         currentIndex: _selectedtap,
-        fixedColor:Color(0xff32CD32),
+        fixedColor:Color(0xff99cc73),
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
         items: [
