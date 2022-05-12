@@ -2,15 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project1_v1/Dialogs/Dialogs.dart';
 
-class auth_service {
+class AuthService {
   static final _auth = FirebaseAuth.instance;
 
   static Future<bool> signUp(String name, String email, String password,
       String phoneNO, String location, context) async {
     try {
-      UserCredential authresult = await _auth.createUserWithEmailAndPassword(
+      UserCredential authResult = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      User? signedIn = authresult.user;
+      User? signedIn = authResult.user;
       if (signedIn != null) {
         return true;
       }
@@ -18,9 +18,13 @@ class auth_service {
     } catch (e) {
       Navigator.pop(context);
       showDialog<void>(
-          context: context,
-          barrierDismissible: false,
-          builder: (context) => ErrorDialog(title: 'ERROR',text: e.toString(),));
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => ErrorDialog(
+          title: 'ERROR',
+          text: e.toString(),
+        ),
+      );
       return false;
     }
   }

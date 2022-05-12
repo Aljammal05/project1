@@ -10,9 +10,10 @@ class CustomerDashboard extends StatefulWidget {
   @override
   _CustomerDashboardState createState() => _CustomerDashboardState();
 }
+
 class _CustomerDashboardState extends State<CustomerDashboard> {
-  int _selectedtap=0;
-  List<Widget> dashboard=[
+  int _selectedTap = 0;
+  List<Widget> dashboard = [
     HomePage(),
     SearchPage(),
     CartPage(),
@@ -25,37 +26,58 @@ class _CustomerDashboardState extends State<CustomerDashboard> {
       appBar: AppBar(
         foregroundColor: Colors.black,
         backgroundColor: Color(0xff99cc73),
-        title: Center(child: Text("Drug Center",style: TextStyle(fontSize: 35),)),
-        actions: [Container(width: 60,)],
+        title: Center(
+          child: Text(
+            "Drug Center",
+            style: TextStyle(fontSize: 35),
+          ),
+        ),
+        actions: [
+          Container(
+            width: 60,
+          )
+        ],
       ),
-      body:  dashboard.elementAt(_selectedtap),
-
+      body: dashboard.elementAt(_selectedTap),
       bottomNavigationBar: BottomNavigationBar(
-
         onTap: (index) {
-          setState(() {
-            _selectedtap = index;
-          });
+          setState(
+            () {
+              _selectedTap = index;
+            },
+          );
         },
-        currentIndex: _selectedtap,
-        fixedColor:Color(0xff99cc73),
+        currentIndex: _selectedTap,
+        fixedColor: Color(0xff99cc73),
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home,size: 45,),
+              icon: Icon(
+                Icons.home,
+                size: 45,
+              ),
               label: 'Home',
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
-              icon: Icon(Icons.search,size: 45,),
+              icon: Icon(
+                Icons.search,
+                size: 45,
+              ),
               label: 'Search',
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart_rounded,size: 45,),
+              icon: Icon(
+                Icons.shopping_cart_rounded,
+                size: 45,
+              ),
               label: 'Cart',
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person,size: 45,),
+              icon: Icon(
+                Icons.person,
+                size: 45,
+              ),
               label: 'Profile',
               backgroundColor: Colors.white),
         ],

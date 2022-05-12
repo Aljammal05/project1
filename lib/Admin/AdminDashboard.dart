@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:project1_v1/Admin/AddDelivery.dart';
+import 'package:project1_v1/Admin/AddPharmacy.dart';
+import 'package:project1_v1/Admin/ManageDelivery.dart';
+import 'package:project1_v1/Admin/ManagePharmacy.dart';
 import 'package:project1_v1/Database/Lists.dart';
-import 'package:project1_v1/UserTypePage.dart';
+import 'package:project1_v1/Templates/Templates.dart';
 
 class AdminDashboard extends StatefulWidget {
   const AdminDashboard({Key? key}) : super(key: key);
@@ -10,16 +14,14 @@ class AdminDashboard extends StatefulWidget {
 }
 
 class _AdminDashboardState extends State<AdminDashboard> {
-  List<Widget> pharmacies = [];
-  List<Widget> deliveries = [
-    IconButton(destination: Container(), height: 100, width: 100)
-  ];
 
+  List<Widget> pharmacies = [];
+  List<Widget> deliveries = [];
 
   void fillDeliveries(){
     deliveries.clear();
     deliveries
-        .add(IconButton(destination: Container(), height: 100, width: 100));
+        .add(AddButton(destination: AddDelivery(), height: 100, width: 100));
     for (int i = 0; i < Database.deliveries.length; i++) {
       deliveries.add(
         Padding(
@@ -27,7 +29,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
           child: ImageButton(
             image: Database.deliveries.elementAt(i).imagePath,
             text: Database.deliveries.elementAt(i).name,
-            destination: Container(),
+            destination: ManageDelivery(),
             height: 100,
             width: 100,
           ),
@@ -39,7 +41,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
   void fillPharmacies(){
     pharmacies.clear();
     pharmacies
-        .add(IconButton(destination: Container(), height: 100, width: 100));
+        .add(AddButton(destination: AddPharmacy(), height: 100, width: 100));
     for (int i = 0; i < Database.pharmacies.length; i++) {
       pharmacies.add(
         Padding(
@@ -47,7 +49,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
           child: ImageButton(
             image: Database.pharmacies.elementAt(i).imagePath,
             text: Database.pharmacies.elementAt(i).name,
-            destination: Container(),
+            destination: ManagePharmacy(),
             height: 100,
             width: 100,
           ),
@@ -55,10 +57,13 @@ class _AdminDashboardState extends State<AdminDashboard> {
       );
     }
   }
+
   @override
   Widget build(BuildContext context) {
+
     fillDeliveries();
     fillPharmacies();
+
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.black,
@@ -156,25 +161,31 @@ class ManagementBar extends StatelessWidget {
   }
 }
 
-class IconButton extends StatefulWidget {
-  IconButton(
+
+class AddButton extends StatefulWidget {
+  AddButton(
       {required this.destination, required this.height, required this.width});
 
   final Widget destination;
   final double height, width;
 
   @override
-  _IconButtonState createState() => _IconButtonState();
+  _AddButtonState createState() => _AddButtonState();
 }
 
-class _IconButtonState extends State<IconButton> {
+class _AddButtonState extends State<AddButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return SafeArea(child: widget.destination);
-        }));
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return SafeArea(child: widget.destination);
+            },
+          ),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -197,3 +208,4 @@ class _IconButtonState extends State<IconButton> {
     );
   }
 }
+

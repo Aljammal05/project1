@@ -1,4 +1,3 @@
-import 'package:project1_v1/UserTypePage.dart';
 enum  UserType  {
   ADMIN,
   CUSTOMER,
@@ -13,6 +12,5 @@ class User{
     this.email=email;
     this.type=type;
   }
-
 
 }

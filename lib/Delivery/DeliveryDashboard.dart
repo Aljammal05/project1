@@ -8,7 +8,6 @@ class DeliveryDashboard extends StatefulWidget {
 }
 
 class _DeliveryDashboardState extends State<DeliveryDashboard> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +29,6 @@ class _DeliveryDashboardState extends State<DeliveryDashboard> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-
           Expanded(
             child: Container(
               decoration: BoxDecoration(
@@ -40,61 +38,17 @@ class _DeliveryDashboardState extends State<DeliveryDashboard> {
               ),
               child: Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                    ],
+                    children: [],
                   ),
                 ),
               ),
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-
-class IconButton extends StatefulWidget {
-  IconButton(
-      {required this.destination, required this.height, required this.width});
-
-  final Widget destination;
-  final double height, width;
-
-  @override
-  _IconButtonState createState() => _IconButtonState();
-}
-
-class _IconButtonState extends State<IconButton> {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return SafeArea(child: widget.destination);
-        }));
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          height: widget.height,
-          width: widget.width,
-          decoration: BoxDecoration(
-              border: Border.all(),
-              color: Color(0x55ffffff),
-              borderRadius: BorderRadius.all(Radius.circular(20))),
-          child: Center(
-            child: Icon(
-              Icons.add,
-              size: 40,
-              color: Color(0xff99cc73),
-            ),
-          ),
-        ),
       ),
     );
   }
