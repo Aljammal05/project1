@@ -11,5 +11,4 @@ class Pharmacy{
     this.imagePath = imagePath;
     this.items = items;
   }
-
 }

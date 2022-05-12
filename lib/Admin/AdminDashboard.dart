@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project1_v1/Admin/AddDelivery.dart';
+import 'package:project1_v1/Admin/AddDriver.dart';
 import 'package:project1_v1/Admin/AddPharmacy.dart';
-import 'package:project1_v1/Admin/ManageDelivery.dart';
+import 'package:project1_v1/Admin/ManageDrivers.dart';
 import 'package:project1_v1/Admin/ManagePharmacy.dart';
 import 'package:project1_v1/Database/Lists.dart';
 import 'package:project1_v1/Templates/Templates.dart';
@@ -16,20 +16,20 @@ class AdminDashboard extends StatefulWidget {
 class _AdminDashboardState extends State<AdminDashboard> {
 
   List<Widget> pharmacies = [];
-  List<Widget> deliveries = [];
+  List<Widget> drivers = [];
 
-  void fillDeliveries(){
-    deliveries.clear();
-    deliveries
-        .add(AddButton(destination: AddDelivery(), height: 100, width: 100));
-    for (int i = 0; i < Database.deliveries.length; i++) {
-      deliveries.add(
+  void fillDrivers(){
+    drivers.clear();
+    drivers
+        .add(AddButton(destination: AddDriver(), height: 100, width: 100));
+    for (int i = 0; i < Database.drivers.length; i++) {
+      drivers.add(
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ImageButton(
-            image: Database.deliveries.elementAt(i).imagePath,
-            text: Database.deliveries.elementAt(i).name,
-            destination: ManageDelivery(),
+            image: Database.drivers.elementAt(i).imagePath,
+            text: Database.drivers.elementAt(i).name,
+            destination: ManageDrivers(),
             height: 100,
             width: 100,
           ),
@@ -61,7 +61,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
   @override
   Widget build(BuildContext context) {
 
-    fillDeliveries();
+    fillDrivers();
     fillPharmacies();
 
     return Scaffold(
@@ -107,7 +107,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                         height: 30,
                       ),
                       ManagementBar(
-                        widgetList: deliveries,
+                        widgetList: drivers,
                         title: ' Delivery Management',
                       )
                     ],

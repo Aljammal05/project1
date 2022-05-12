@@ -1,9 +1,9 @@
-class Delivery{
+class Driver{
 
   String name = "";
   String imagePath = "image/delivery.png";
 
-  Delivery (String name){
+  Driver (String name){
     this.name = name;
   }
 
