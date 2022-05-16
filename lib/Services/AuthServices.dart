@@ -21,6 +21,7 @@ class AuthService {
         context: context,
         barrierDismissible: false,
         builder: (context) => ErrorDialog(
+          action: (){Navigator.pop(context);},
           title: 'ERROR',
           text: e.toString(),
         ),

@@ -70,6 +70,7 @@ class _RecoveryPageState extends State<RecoveryPage> {
                           context: context,
                           barrierDismissible: false,
                           builder: (context) => ErrorDialog(
+                            action: (){Navigator.pop(context);},
                             title: 'Sorry',
                             text:
                                 'All of fields are required,\nplease fill all of them.',

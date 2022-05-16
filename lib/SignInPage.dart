@@ -131,6 +131,7 @@ class _SignInPageState extends State<SignInPage> {
                           context: context,
                           barrierDismissible: false,
                           builder: (context) => ErrorDialog(
+                            action: (){Navigator.pop(context);},
                             title: 'Sorry',
                             text:
                                 'All of fields are required,\nplease fill all of them.',
@@ -177,6 +178,7 @@ class _SignInPageState extends State<SignInPage> {
                             context: context,
                             barrierDismissible: false,
                             builder: (context) => ErrorDialog(
+                              action: (){Navigator.pop(context);},
                               title: 'Wrong Input',
                               text:
                                   'This email or password is wrong.\nPlease try again.',

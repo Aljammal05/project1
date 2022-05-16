@@ -75,8 +75,9 @@ class WarningDialog extends StatelessWidget {
 }
 
 class ErrorDialog extends StatelessWidget {
-  ErrorDialog({this.title = '', this.text = ''});
-  final String title, text;
+  ErrorDialog({this.title = '', this.text = '' , this.buttonTitle ="Cancel",required this.action });
+  final String title, text , buttonTitle;
+  var action ;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -118,9 +119,9 @@ class ErrorDialog extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 12.0),
                 child: TextButton(
-                  onPressed: () => Navigator.pop(context, 'Cancel'),
+                  onPressed: action,
                   child: Text(
-                    'Cancel',
+                    buttonTitle,
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 ),
@@ -166,72 +167,6 @@ class WaitingDialog extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 20.0, top: 12),
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation(Colors.white),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class FeedbackDialog extends StatelessWidget {
-  FeedbackDialog(this.name, this.feedback, this.userType);
-  final String name, userType;
-  final String feedback;
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      contentPadding: const EdgeInsets.all(0),
-      backgroundColor: Color(0x00ffffff),
-      elevation: 0,
-      content: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(
-            Radius.circular(15),
-          ),
-          color: Color(0xff99cc73),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 15),
-                    child: Row(
-                      children: [
-                        Text(
-                          name,
-                          style: TextStyle(fontSize: 22, color: Colors.white),
-                        ),
-                        Text(
-                          ' (' + userType + ')',
-                          style: TextStyle(fontSize: 18, color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 16.0, horizontal: 30),
-                    child: Text(
-                      feedback,
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                  ),
-                ],
-              ),
-              TextButton(
-                onPressed: () => Navigator.pop(context, 'Cancel'),
-                child: Text(
-                  'Cancel',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
               ),
             ],

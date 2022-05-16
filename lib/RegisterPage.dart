@@ -122,6 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             context: context,
                             barrierDismissible: false,
                             builder: (context) => ErrorDialog(
+                              action: () {Navigator.pop(context);},
                               title: 'Sorry',
                               text:
                                   'All of fields are required,\nplease fill all of them.',
@@ -132,6 +133,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             context: context,
                             barrierDismissible: false,
                             builder: (context) => ErrorDialog(
+                              action: () {Navigator.pop(context);},
                               title: 'Invalid Password',
                               text:
                                   'Please make sure your password \ncontain 8 digits or more',
@@ -154,11 +156,24 @@ class _RegisterPageState extends State<RegisterPage> {
                                     context);
                                 if (isValid) {
                                   Navigator.pop(context);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          SafeArea(child: SignInPage()),
+                                  showDialog<void>(
+                                    context: context,
+                                    barrierDismissible: false,
+                                    builder: (context) => ErrorDialog(
+                                      title: "SUCCESS",
+                                      text: "Your account has been\n"
+                                          "created successfully.",
+                                      buttonTitle: "OK THANKS",
+                                      action: () {
+                                        Navigator.pop(context);
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                SafeArea(child: SignInPage()),
+                                          ),
+                                        );
+                                      },
                                     ),
                                   );
                                 } else {
